@@ -1,0 +1,26 @@
+.Sign-up-container {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(--dark-blue-grey);
+  }
+  .Sign-up-box {
+    box-sizing: border-box;
+    overflow: auto;
+    border: 1px var(--dark-blue-grey) solid;
+    padding: 32px;
+    width: 375px;
+    max-width: 375px;
+    height: 772px;
+    max-height: 772px;
+    background-image: linear-gradient(to bottom, #ffffff, #f1f4fa);
+  }
+  
+
+  
