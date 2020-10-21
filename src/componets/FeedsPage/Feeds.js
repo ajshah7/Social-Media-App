@@ -17,8 +17,14 @@ const Feed = ({ feeds, user, posts }) => {
     "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg";
 
   const addPost = () => {
-    if (newPost !== "" || chosenEmoji!=="") {
+    if (chosenEmoji.emoji!==undefined) {
       feeds(images, user.name, newPost + chosenEmoji.emoji);
+     console.log(chosenEmoji.emoji);
+      setChosenEmoji(null);
+      setEmoji(false);
+    }
+    else{
+        feeds(images, user.name, newPost);
      
       setChosenEmoji(null);
       setEmoji(false);
