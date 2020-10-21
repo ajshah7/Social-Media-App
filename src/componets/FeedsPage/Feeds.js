@@ -20,13 +20,13 @@ const Feed = ({ feeds, user, posts }) => {
     if (chosenEmoji.emoji!==undefined) {
       feeds(images, user.name, newPost + chosenEmoji.emoji);
      console.log(chosenEmoji.emoji);
-      setChosenEmoji(null);
+      setChosenEmoji("");
       setEmoji(false);
     }
     else{
         feeds(images, user.name, newPost);
      
-      setChosenEmoji(null);
+      setChosenEmoji("");
       setEmoji(false);
     }
  
