@@ -4,7 +4,7 @@ export const feeds = (uuid, image, name, post, time) => (dispatch) => {
   const feedData = {
     uuid: uuid,
     postID: uuidv4(),
-    image: "https://randomuser.me/api/portraits/men/"+image+".jpg",
+    image: image,
     name: name,
     post: post,
     time: time,
