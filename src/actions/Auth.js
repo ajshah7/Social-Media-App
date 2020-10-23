@@ -20,5 +20,5 @@ export const loggedUser = (name, uuid) => (dispatch) => {
 };
 
 export const userLogout = () => (dispatch) => {
-  dispatch({ type: USER_LOGIN });
+  dispatch({ type: USER_LOGOUT });
 };
