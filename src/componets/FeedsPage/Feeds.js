@@ -21,7 +21,6 @@ const Feed = ({ posts }) => {
         </div>
 
         <PostField />
-
         {posts.map((posts) => (
           <Link to={`/feed/${posts.postID}`} id="link">
             <div className="posts-container">

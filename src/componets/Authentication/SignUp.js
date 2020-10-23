@@ -16,6 +16,9 @@ const Signup = ({ signUp, user }) => {
   const [fullName, setFullName] = useState("");
   const [success, setSuccess] = useState("");
 
+
+
+
   const [error, setError] = useState("");
 
   const onSubmit = () => {
@@ -26,7 +29,7 @@ const Signup = ({ signUp, user }) => {
       setSuccess("fail");
     }
     // checking if the email is typed
-    else if (email === "") {
+    else if (email || !email.includes("@")) {
       setError("Email is required");
       type = "incorrect-password";
       setSuccess("fail");
@@ -103,7 +106,8 @@ const Signup = ({ signUp, user }) => {
         ) : (
           <span></span>
         )}
-        <button onClick={onSubmit} className="sign-in-button ">
+        {/* "sign-in-button" */}
+        <button onClick={onSubmit} className= {email!=="" && password!==""&& confirmPassword!=="" && fullName!=="" ? "sign-in-button" :"sign-in-button-grey" }>
           SIGN UP
         </button>
 

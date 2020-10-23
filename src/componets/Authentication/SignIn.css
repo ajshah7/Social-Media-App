@@ -72,7 +72,7 @@
     text-transform: uppercase;
     text-align: center;
     padding: 12px 52px;
-    margin-top: 50px;
+    margin-top: 82px;
     outline: none;
     border: none;
     border-radius: 20px;
@@ -84,9 +84,29 @@
     color: #ffffff;
     cursor: pointer;
   }
+  .sign-in-button-grey {
+    margin: auto;
+    display: flex;
+    font: uppercase;
+    align-items: center;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 52px;
+    margin-top: 82px;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    background-color: #cccccc;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2.46px;
+    color: #ffffff;
+    cursor: pointer;
+  }
   /* dont have account / already have an account style  */
   .dont-have-an-acc {
-    margin-top: 80px;
+    margin-top: 140px;
     font-family: Montserrat;
     font-size: 16px;
     text-align: center;
@@ -120,6 +140,7 @@
   }
 
   /*  the sign in , sign up button style */
+
   .sign-in-button {
     margin: auto;
     display: flex;
@@ -140,6 +161,27 @@
     color: #ffffff;
     cursor: pointer;
   }
+    /*  the sign in , sign up button style */
+    .sign-in-button-grey {
+      margin: auto;
+      display: flex;
+      font: uppercase;
+      align-items: center;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 12px 52px;
+      margin-top: 50px;
+      outline: none;
+      border: none;
+      border-radius: 20px;
+      background-color: #cccccc;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 2.46px;
+      color: #ffffff;
+      cursor: pointer;
+    }
   /* dont have account / already have an account style  */
   .dont-have-an-acc {
     margin-top: 100px;

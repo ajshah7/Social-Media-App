@@ -22,7 +22,7 @@ const Feed = ({ feeds, loggedUser }) => {
         loggedUser.uuid,
         loggedUser.name,
         newPost,
-        1 + "s"
+        Date.now,
       );
       setNewPost("")
       setEmoji(false);
