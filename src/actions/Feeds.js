@@ -1,10 +1,10 @@
 import { USER_FEEDS } from "../actions/Types";
 import { v4 as uuidv4 } from "uuid";
-export const feeds = (uuid, image, name, post, time) => (dispatch) => {
+export const feeds = (uuid, name, post, time) => (dispatch) => {
   const feedData = {
     uuid: uuid,
     postID: uuidv4(),
-    image: image,
+    image: "https://rb.gy/g72myz",
     name: name,
     post: post,
     time: time,

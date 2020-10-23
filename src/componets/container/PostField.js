@@ -5,7 +5,6 @@ import { feeds } from "../../actions/Feeds";
 import Picker from "emoji-picker-react";
 import "./PostField.css";
 
-var images = "https://rb.gy/g72myz";
 
 const Feed = ({ feeds, loggedUser }) => {
   const [newPost, setNewPost] = useState("");
@@ -21,11 +20,11 @@ const Feed = ({ feeds, loggedUser }) => {
     if ( newPost !== "") {
       feeds(
         loggedUser.uuid,
-        images,
         loggedUser.name,
         newPost,
         1 + "s"
       );
+      setNewPost("")
       setEmoji(false);
     }
   };
