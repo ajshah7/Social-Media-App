@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { loggedUser } from "../../actions/Auth";
 import Error from "./Error";
 
 import "./SignIn.css";
-
-const SignIn = ({ user }) => {
+var type;
+const SignIn = ({ user, loggedUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
   const onSubmit = () => {
-    if (email === user.email && password === user.password) {
-      setSuccess("yes");
-    } else {
-      setSuccess("fail");
-      if (email !== user.email) {
-        setError("Incorrect email or password");
-      } else if (password !== user.password) {
-        setError("Incorrect password");
+    var flag = true;
+    for (var i = 0; i < user.length; i++) {
+      if (email === user[i].email) {
+        if (password === user[i].password) {
+          flag = false;
+          loggedUser(user[i].name, user[i].uuid);
+          setSuccess("yes");
+        }
       }
+    }
+
+    if (flag) {
+      type = "incorrect-password";
+      setSuccess("fail");
+      setError("Incorrect password");
     }
   };
 
@@ -50,7 +58,11 @@ const SignIn = ({ user }) => {
         />
         <div className="forgot-password">Forgot Password?</div>
 
-        {success === "fail" ? <Error error={error} /> : <span></span>}
+        {success === "fail" ? (
+          <Error error={error} type={type} />
+        ) : (
+          <span></span>
+        )}
 
         <button className="sign-in-button" onClick={onSubmit}>
           SIGN IN
@@ -65,7 +77,10 @@ const SignIn = ({ user }) => {
   );
 };
 
+SignIn.propTypes = {
+  loggedUser: PropTypes.func.isRequired,
+};
 const mapStateToProps = (state) => ({
   user: state.Auth.user,
 });
-export default connect(mapStateToProps, {})(SignIn);
+export default connect(mapStateToProps, { loggedUser })(SignIn);

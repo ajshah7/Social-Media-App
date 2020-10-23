@@ -1,30 +1,42 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { feeds } from "../../actions/Feeds";
-import { userLogout } from "../../actions/Auth";
-import PostField from "../container/PostField";
-import "./Feeds.css";
+import "../FeedsPage/Feeds.css";
+import img from "../../images/back icon.png";
+const ViewFeed = ({ loggedUser, posts, match }) => {
+  var id = match.params.id;
+  var gotFeed = [];
 
-const Feed = ({ posts, userLogout }) => {
+  //   iterating through all post to get the maching postID
+  for (var i = 0; i < posts.length; i++) {
+    if (id == posts[i].postID) {
+      gotFeed.push(posts[i]);
+    }
+  }
+  //   if reloaded, the logged user will be undefined. redirecting back to login
+  if (loggedUser.name === undefined) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <div className="feeds-container">
       <div className="feeds-box">
         <div className="field-head">
           <div className="your-feeds">
             <div className="feed-item-box">
-              <div className="header-text">Your Feed</div>
+              <Link to="/feeds">
+                <img alt="" className="back-icon" src={img} />
+              </Link>
+              <div className="header-text">Feed Item</div>
             </div>
             <Link to="/">
               <span className="feeds-logout">LOGOUT</span>
             </Link>
           </div>
         </div>
-
-        <PostField />
-
-        {posts.map((posts) => (
-          <Link to={`/feed/${posts.postID}`} id="link">
+        <div className="toFeeds">
+          {gotFeed.map((posts) => (
             <div className="posts-container">
               <div className="feeds-user-info-box">
                 <img alt="" src={posts.image} className="user-image" />
@@ -57,8 +69,8 @@ const Feed = ({ posts, userLogout }) => {
               </div>
               <div className="feeds-text">{posts.post}</div>
             </div>
-          </Link>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -66,5 +78,6 @@ const Feed = ({ posts, userLogout }) => {
 
 const mapStateToProps = (state) => ({
   posts: state.Feeds.posts,
+  loggedUser: state.Auth.loggedUser,
 });
-export default connect(mapStateToProps, { feeds, userLogout })(Feed);
+export default connect(mapStateToProps, { feeds })(ViewFeed);
