@@ -11,7 +11,7 @@ const ViewProfile = ({ loggedUser, posts, match }) => {
 
   //   iterating through all post to get all user postID
   for (var i = 0; i < posts.length; i++) {
-    if (id == posts[i].uuid) {
+    if (String(id) === String(posts[i].uuid)) {
       gotPosts.push(posts[i]);
     }
   }
