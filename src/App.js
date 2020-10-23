@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <HashRouter> */}
+        <HashRouter>
         <Switch>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/sign-up" component={SignUp} />
@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/user/:id" component={ViewProfile} />
           <Route exact path="/feed/:id" component={ViewFeed} />
         </Switch>
-        {/* </HashRouter> */}
+        </HashRouter>
       </Router>
     </div>
   );
