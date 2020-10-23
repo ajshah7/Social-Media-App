@@ -10,7 +10,7 @@ const ViewFeed = ({ loggedUser, posts, match }) => {
 
   //   iterating through all post to get the maching postID
   for (var i = 0; i < posts.length; i++) {
-    if (id == posts[i].postID) {
+    if (String(id) === String(posts[i].postID)) {
       gotFeed.push(posts[i]);
     }
   }
