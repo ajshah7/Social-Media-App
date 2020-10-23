@@ -60,6 +60,7 @@ const Signup = ({ signUp, user }) => {
     }
   };
 
+  // if new user is registered, redirecting to sign in.
   if (success === "yes") {
     return <Redirect to="/" />;
   }

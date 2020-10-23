@@ -8,29 +8,29 @@ import "./PostField.css";
 var images = "https://rb.gy/g72myz";
 
 const Feed = ({ feeds, loggedUser }) => {
-  const [chosenEmoji, setChosenEmoji] = useState([]);
-  const [newPost, setNewText] = useState("");
+  const [newPost, setNewPost] = useState("");
   const [emoji, setEmoji] = useState("");
 
+  // choosing and adding emoji into the text
   const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject);
+    setNewPost(newPost+emojiObject.emoji+" ");
   };
-
+  
+ // posting to the feeds.
   const addPost = () => {
-    if (chosenEmoji.emoji || newPost !== "") {
+    if ( newPost !== "") {
       feeds(
         loggedUser.uuid,
         images,
         loggedUser.name,
-        chosenEmoji.emoji ? newPost + chosenEmoji.emoji : newPost,
+        newPost,
         1 + "s"
       );
-      console.log(chosenEmoji.emoji);
-      setChosenEmoji("");
       setEmoji(false);
     }
   };
 
+  //   if reloaded, the logged user will be undefined. redirecting back to login
   if (loggedUser.name === undefined) {
     return <Redirect to="/" />;
   }
@@ -40,15 +40,15 @@ const Feed = ({ feeds, loggedUser }) => {
         {/* text area to post */}
         <div className="post-textarea">
           <textarea
-            value={chosenEmoji.emoji ? newPost + chosenEmoji.emoji : newPost}
+            value={newPost}
             type="text"
             className="write-feed-here"
             placeholder="Write a post..."
-            onChange={(e) => setNewText(e.target.value)}
+            onChange={(e) => setNewPost(e.target.value)}
           ></textarea>
         </div>
 
-        {/* emoji div */}
+        {/* emoji button div */}
         <div className="emoji-button" onClick={() => setEmoji(!emoji)}>
           <span role="img" aria-label="happy-emoji">
             &#128515;

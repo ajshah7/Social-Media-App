@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { feeds } from "../../actions/Feeds";
-import { userLogout } from "../../actions/Auth";
 import PostField from "../container/PostField";
 import "./Feeds.css";
 
-const Feed = ({ posts, userLogout }) => {
+const Feed = ({ posts }) => {
   return (
     <div className="feeds-container">
       <div className="feeds-box">
@@ -67,4 +66,4 @@ const Feed = ({ posts, userLogout }) => {
 const mapStateToProps = (state) => ({
   posts: state.Feeds.posts,
 });
-export default connect(mapStateToProps, { feeds, userLogout })(Feed);
+export default connect(mapStateToProps, { feeds })(Feed);
