@@ -15,3 +15,8 @@ export const signUp = (email, password, Fullname) => (dispatch) => {
   dispatch({ type: USER_LOGIN, payload: data });
 };
 
+export const loggedUser = (name, uuid) => (dispatch) => {
+  dispatch({ type: LOGGED_USER, payload: { name: name, uuid: uuid } });
+};
+
+
